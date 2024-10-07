@@ -18,6 +18,8 @@ namespace Michael.Scripts
         
             fruit.GetComponent<Rigidbody>().AddForce(RandomVector() * RandomForce(),ForceMode.Impulse);
             fruit.transform.rotation = Random.rotation;
+            
+            Destroy(fruit,3f);
         }
     
         private float RandomForce() {
