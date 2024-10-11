@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1862930651345425666}
   - component: {fileID: 5489622424653619729}
   - component: {fileID: 5098919297206748234}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 8496946093227728595}
   - component: {fileID: 6205739299369656312}
   - component: {fileID: 4030139617154366759}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: bomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -231,6 +231,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wholefruit: {fileID: 5179400531127152318}
   slicedFruit: {fileID: 7540983520403056740}
+  sliceForce: 130
+  rotationForce: 200
 --- !u!1 &5179400531127152318
 GameObject:
   m_ObjectHideFlags: 0
@@ -242,7 +244,7 @@ GameObject:
   - component: {fileID: 5207615253028638548}
   - component: {fileID: 245261612218662575}
   - component: {fileID: 7539829574102302307}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: 'bomb '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -328,7 +330,7 @@ GameObject:
   - component: {fileID: 6108602849063589232}
   - component: {fileID: 8522026313780279366}
   - component: {fileID: 4299529388410296674}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: meche
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -436,7 +438,7 @@ GameObject:
   - component: {fileID: 1059820673518475903}
   - component: {fileID: 8580677161995703020}
   - component: {fileID: 4249053278763037362}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -565,7 +567,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9080025305486547998}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: "fruit coup\xE9"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -601,7 +603,7 @@ GameObject:
   - component: {fileID: 8720761471076389483}
   - component: {fileID: 6925442641119110399}
   - component: {fileID: 8286633400485311917}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: tuyau
   m_TagString: Untagged
   m_Icon: {fileID: 0}

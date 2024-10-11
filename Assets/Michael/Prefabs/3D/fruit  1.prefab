@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 7023845350475283620}
   - component: {fileID: 8496946093227728595}
   - component: {fileID: 6205739299369656312}
-  - component: {fileID: 7523237467722893632}
-  m_Layer: 0
-  m_Name: 'fruit '
+  - component: {fileID: 2534196528623473249}
+  m_Layer: 3
+  m_Name: fruit  1
   m_TagString: Fruit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,8 +29,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
   m_LocalPosition: {x: -0.80351716, y: 1, z: -17.551857}
-  m_LocalScale: {x: 100, y: 99.999985, z: 99.999985}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 50, y: 50, z: 50}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5207615253028638548}
   - {fileID: 2324406844484643064}
@@ -84,7 +84,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.009999998
   m_Center: {x: -0.000000003259629, y: 0.0000000032596283, z: 0}
---- !u!114 &7523237467722893632
+--- !u!114 &2534196528623473249
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -98,6 +98,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wholefruit: {fileID: 5179400531127152318}
   slicedFruit: {fileID: 9134919536330750426}
+  sliceForce: 130
+  rotationForce: 200
 --- !u!1 &5179400531127152318
 GameObject:
   m_ObjectHideFlags: 0
@@ -109,7 +111,7 @@ GameObject:
   - component: {fileID: 5207615253028638548}
   - component: {fileID: 245261612218662575}
   - component: {fileID: 7539829574102302307}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: fruit entier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -159,7 +161,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f640146e7f4099947bae048b98ab5f84, type: 2}
+  - {fileID: 2100000, guid: 6e79df144c530e5408e1797dcc9fb7de, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -194,7 +196,7 @@ GameObject:
   - component: {fileID: 549357672221103375}
   - component: {fileID: 1571944737729417224}
   - component: {fileID: 7503761296500781186}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -244,7 +246,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f640146e7f4099947bae048b98ab5f84, type: 2}
+  - {fileID: 2100000, guid: 6e79df144c530e5408e1797dcc9fb7de, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -327,7 +329,7 @@ GameObject:
   - component: {fileID: 5744400744760043022}
   - component: {fileID: 185104289259793579}
   - component: {fileID: 4737042645935819807}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -377,7 +379,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f640146e7f4099947bae048b98ab5f84, type: 2}
+  - {fileID: 2100000, guid: 6e79df144c530e5408e1797dcc9fb7de, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -456,7 +458,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2324406844484643064}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: "fruit coup\xE9"
   m_TagString: Untagged
   m_Icon: {fileID: 0}

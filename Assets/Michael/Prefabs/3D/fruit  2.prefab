@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8496946093227728595}
   - component: {fileID: 6205739299369656312}
   - component: {fileID: -970544766598850753}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: fruit  2
   m_TagString: Fruit
   m_Icon: {fileID: 0}
@@ -98,6 +98,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wholefruit: {fileID: 5179400531127152318}
   slicedFruit: {fileID: 9134919536330750426}
+  sliceForce: 130
+  rotationForce: 200
 --- !u!1 &5179400531127152318
 GameObject:
   m_ObjectHideFlags: 0
@@ -109,7 +111,7 @@ GameObject:
   - component: {fileID: 5207615253028638548}
   - component: {fileID: 245261612218662575}
   - component: {fileID: 7539829574102302307}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: fruit entier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -194,7 +196,7 @@ GameObject:
   - component: {fileID: 549357672221103375}
   - component: {fileID: 1571944737729417224}
   - component: {fileID: 7503761296500781186}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -327,7 +329,7 @@ GameObject:
   - component: {fileID: 5744400744760043022}
   - component: {fileID: 185104289259793579}
   - component: {fileID: 4737042645935819807}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -456,7 +458,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2324406844484643064}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: "fruit coup\xE9"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
