@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Michael.Scripts
 {
@@ -7,9 +9,19 @@ namespace Michael.Scripts
         [SerializeField]private GameObject[] fruitPrefabs;
         [SerializeField] private float left;
         [SerializeField] private float right;
-   
+        [SerializeField] private BeatManager _beatManager;
         void Start() {
-            InvokeRepeating("SpawnRandomly",3f,RandomRepeat());
+            //InvokeRepeating("SpawnRandomly",3f,RandomRepeat());
+        }
+
+        private void OnEnable()
+        {
+            BeatManager.onBeatTrigger += SpawnRandomly;
+        }
+
+        private void OnDisable()
+        {
+            BeatManager.onBeatTrigger -= SpawnRandomly;
         }
 
         private void SpawnRandomly() {
@@ -23,7 +35,7 @@ namespace Michael.Scripts
         }
     
         private float RandomForce() {
-            float force = Random.Range(14f, 16f);
+            float force = Random.Range(10f, 13.5f);
             return force;
         }
     

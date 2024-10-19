@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Fruit : MonoBehaviour
 {
-
+    public static Action OnSliced;
     [SerializeField] private GameObject wholefruit;
     [SerializeField] private GameObject slicedFruit;
     [SerializeField] private float sliceForce = 130f;
@@ -15,6 +15,7 @@ public class Fruit : MonoBehaviour
     { 
         _rb = GetComponent<Rigidbody>();
     }
+    
 
     void Update() {
         if (wholefruit) {
@@ -33,14 +34,14 @@ public class Fruit : MonoBehaviour
             srb.velocity =  _rb.velocity * 1.2f;
         }
     }
-    
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("blade"))
         {
             Debug.Log("fruit touché");
             SliceFruit();
+            OnSliced.Invoke();
         }
-       
     }
 }
