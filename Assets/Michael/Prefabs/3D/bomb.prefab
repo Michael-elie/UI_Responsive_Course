@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 4030139617154366759}
   m_Layer: 3
   m_Name: bomb
-  m_TagString: Untagged
+  m_TagString: Bomb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -297,6 +297,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: e013e95211545a640bead803d70022d9, type: 2}
+  - {fileID: 2100000, guid: a3200bd3bb2e7164dafa5349e24b824f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

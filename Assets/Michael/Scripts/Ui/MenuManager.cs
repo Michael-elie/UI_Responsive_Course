@@ -11,8 +11,7 @@ using Random = UnityEngine.Random;
 
 public class MenuManager : MonoBehaviour
 {
-    public static float MusicVolume;
-    public static float SfxVolume;
+    [SerializeField] private Data _data;
     [SerializeField] private AudioMixer _mixer;
     [SerializeField] private Slider _sfxSlider;
     [SerializeField] private Slider _musicSlider;
@@ -24,6 +23,12 @@ public class MenuManager : MonoBehaviour
         Screen.orientation = ScreenOrientation.LandscapeLeft;
         Screen.autorotateToPortrait = false;
         Screen.autorotateToPortraitUpsideDown = false;
+    }
+
+    private void Start()
+    {
+        SetMusicVolume();
+        SetSfxVolume();
     }
 
     public void StartGame() {
@@ -80,13 +85,13 @@ public class MenuManager : MonoBehaviour
     }
      
      public void SetMusicVolume() {
-        MusicVolume = _musicSlider.value;
-        _mixer.SetFloat("Music", Mathf.Log10(MusicVolume) * 20);
+        _data.MusicVolume = _musicSlider.value;
+        _mixer.SetFloat("Music", Mathf.Log10(_data.MusicVolume) * 20);
     }
 
     public void SetSfxVolume() {
-        SfxVolume = _sfxSlider.value;
-        _mixer.SetFloat("Sfx", Mathf.Log10(SfxVolume) * 20);
+        _data.SfxVolume = _sfxSlider.value;
+        _mixer.SetFloat("Sfx", Mathf.Log10(_data.SfxVolume) * 20);
     }
     
     

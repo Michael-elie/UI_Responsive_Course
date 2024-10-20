@@ -16,12 +16,12 @@ public class BeatManager : MonoBehaviour
     
     private void OnEnable()
     {
-        Fruit.OnSliced += CheckPlayerInput; // Abonnez-vous à l'événement onClick
+        Blade.OnTargetSliced += CheckPlayerInput; 
     }
 
     private void OnDisable()
     {
-        Fruit.OnSliced -= CheckPlayerInput; // Désabonnez-vous de l'événement
+        Blade.OnTargetSliced -= CheckPlayerInput;
     }
 
     
@@ -39,12 +39,12 @@ public class BeatManager : MonoBehaviour
         {
             float intervalLength = interval.GetIntervalength(bpm);
             float closestBeatTime = Mathf.Floor(currentTime / intervalLength) * intervalLength;
-
-            // Vérifier si l'entrée du joueur est proche d'un beat
+            
             if (Mathf.Abs(currentTime - closestBeatTime) <= timingTolerance)
             {
                 Debug.Log("Perfect hit!");
                 onPerfectHit?.Invoke();
+                GameManager.Score += 4;
             }
         }
     }

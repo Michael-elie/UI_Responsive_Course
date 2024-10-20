@@ -1,11 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Fruit : MonoBehaviour
 {
-    public static Action OnSliced;
+    
     [SerializeField] private GameObject wholefruit;
     [SerializeField] private GameObject slicedFruit;
     [SerializeField] private float sliceForce = 130f;
@@ -23,10 +20,11 @@ public class Fruit : MonoBehaviour
         }
       
     }
-    private void SliceFruit() {
+    public void SliceFruit() {
         
         wholefruit.SetActive(false);
         slicedFruit.SetActive(true);
+        gameObject.GetComponent<Collider>().enabled = false;
 
         Rigidbody[] sliceRb = slicedFruit.transform.GetComponentsInChildren<Rigidbody>();
         foreach (Rigidbody srb in sliceRb) {
@@ -35,13 +33,5 @@ public class Fruit : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("blade"))
-        {
-            Debug.Log("fruit touché");
-            SliceFruit();
-            OnSliced.Invoke();
-        }
-    }
+  
 }
