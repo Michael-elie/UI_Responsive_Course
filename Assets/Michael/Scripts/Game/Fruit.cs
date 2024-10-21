@@ -29,7 +29,7 @@ public class Fruit : MonoBehaviour
         Rigidbody[] sliceRb = slicedFruit.transform.GetComponentsInChildren<Rigidbody>();
         foreach (Rigidbody srb in sliceRb) {
             srb.AddExplosionForce(sliceForce, transform.position,10);
-            srb.velocity =  _rb.velocity * 1.2f;
+            srb.linearVelocity =  _rb.linearVelocity * 1.2f;
         }
     }
 

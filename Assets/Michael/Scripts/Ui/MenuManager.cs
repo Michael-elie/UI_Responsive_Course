@@ -27,8 +27,8 @@ public class MenuManager : MonoBehaviour
 
     private void Start()
     {
-        SetMusicVolume();
-        SetSfxVolume();
+       // SetMusicVolume();
+       // SetSfxVolume();
     }
 
     public void StartGame() {

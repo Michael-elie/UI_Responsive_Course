@@ -1,10 +1,9 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Blade : MonoBehaviour
 {
@@ -24,22 +23,29 @@ public class Blade : MonoBehaviour
     private Rigidbody _rb;
     private TrailRenderer _tr;
     private Collider _collider;
-    
-    
+    private InputAction _sliceAction;
+    private InputAction _TouchPositionAction;
+    private bool _touched;
+
+   
     void Start() {
         _rb = GetComponent<Rigidbody>();
         _tr = GetComponent<TrailRenderer>();
-        _collider = GetComponent<SphereCollider>();
-
+        _collider = GetComponent<Collider>();
+      
         _tr.material = _data.BladeMaterial;
     }
     
     private void OnEnable()
     {
+        _sliceAction = InputSystem.actions.FindAction("TouchPress");
+        _TouchPositionAction = InputSystem.actions.FindAction("TouchPosition");
         OnBombTouched += DisplayMalusText;
         OnTargetSliced += SliceComboTarget;
         BeatManager.onPerfectHit += DisplayPerfectHit;
         OnCdSliced += DisplayCDText;
+        _sliceAction.performed += OnSlice;
+        _sliceAction.canceled += OnSliceEnd;
     }
     private void OnDisable()
     {
@@ -47,7 +53,39 @@ public class Blade : MonoBehaviour
         OnCdSliced -= DisplayCDText;
         OnTargetSliced -= SliceComboTarget;
         BeatManager.onPerfectHit -= DisplayPerfectHit;
+        _sliceAction.performed -= OnSlice;
+        _sliceAction.canceled -= OnSliceEnd;
     }
+
+    private void OnSlice(InputAction.CallbackContext context) {
+       _touched = true;
+    }
+    private void OnSliceEnd(InputAction.CallbackContext context) {
+      
+       _touched = false;
+      
+    }
+
+   
+
+    void Update() {
+
+        if (_touched)
+        {
+            _tr.enabled = true;
+            _collider.enabled = true;
+        }
+        else 
+        {
+            _tr.enabled = false;
+            _collider.enabled = false;
+        }
+        Vector3 pos = mainCamera.ScreenToWorldPoint(_TouchPositionAction.ReadValue<Vector2>());
+        pos.z = 0;
+        _rb.position = pos;
+    }
+
+   
 
     private void SliceComboTarget() {
         GameManager.Score += 1;
@@ -74,26 +112,12 @@ public class Blade : MonoBehaviour
         fruitCount = 0;
     }
     
-    void Update() {
-
-        if (Input.GetMouseButtonDown(0)) {
-            
-            _tr.enabled = true;
-            _collider.enabled = true;
-          //  _particle.Play();
-        }
-        if (Input.GetMouseButtonUp(0)) {
-            _tr.enabled = false;
-            _collider.enabled = false;
-          //  _particle.Stop();
-        }
-        BladeFollowMouse();
-    }
 
     private void BladeFollowMouse() {
         Vector3 mousePos = Input.mousePosition;
         mousePos.z = 8;
         _rb.position = mainCamera.ScreenToWorldPoint(mousePos);
+        
     }
     
     private void OnTriggerEnter(Collider other)
@@ -107,6 +131,7 @@ public class Blade : MonoBehaviour
         if (other.CompareTag("Bomb"))
         {
             OnBombTouched.Invoke();
+            other.GetComponent<Fruit>().SliceFruit();
         }
         if (other.CompareTag("Cd"))
         {

@@ -1,0 +1,77 @@
+{
+    "name": "ActionsMap",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "46e966e9-dcd7-4f9a-8972-a62646c5c2b8",
+            "actions": [
+                {
+                    "name": "TouchPress",
+                    "type": "Value",
+                    "id": "04fbec52-b8ce-4741-96c8-392b61ae3f45",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "TouchPosition",
+                    "type": "Value",
+                    "id": "49de27eb-7895-4a00-9868-dfde1c462797",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "eba54ef5-50eb-438f-bfe9-197b0be7f8bc",
+                    "path": "<Touchscreen>/Press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Phone",
+                    "action": "TouchPress",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6b2bc55e-bce6-4c7b-b149-32dc5e3223b3",
+                    "path": "<Mouse>/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TouchPress",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7d10afca-1c7b-483e-b295-58f223587361",
+                    "path": "<Pointer>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TouchPosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "Phone",
+            "bindingGroup": "Phone",
+            "devices": [
+                {
+                    "devicePath": "<Touchscreen>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}

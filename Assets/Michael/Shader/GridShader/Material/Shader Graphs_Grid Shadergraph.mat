@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 7
+  version: 9
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
@@ -33,11 +33,16 @@ Material:
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
-  disabledShaderPasses: []
+  disabledShaderPasses:
+  - MOTIONVECTORS
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -57,11 +62,21 @@ Material:
     - ENUM_33717FA208404E76B3A37D5A9B225D0C: 1
     - ENUM_33AFC9722114471784288762972196A0: 0
     - Vector1_b83bfac42dd9445c91d4c92c29113349: 0.978
+    - _ColorMask: 15
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Speed: 0.5
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UIMaskSoftnessX: 1
+    - _UIMaskSoftnessY: 1
     m_Colors:
-    - Color_4e5f204fd5f64ed299f6b622e64c15a9: {r: 0.359121, g: 0.31563726, b: 0.38679248, a: 0}
-    - Color_5741e0a7b6e24d9881c17eadeabc70c3: {r: 0.86039746, g: 0, b: 0.5592585, a: 0}
+    - Color_4e5f204fd5f64ed299f6b622e64c15a9: {r: 0.16981131, g: 0.16260234, b: 0.16260234, a: 0}
+    - Color_5741e0a7b6e24d9881c17eadeabc70c3: {r: 6.8831797, g: 0, b: 4.474068, a: 0}
     - Vector2_fb6a8e1a90ea4826b5f00fdfee1c4bbc: {r: 7, g: 7, b: 0, a: 0}
+    - _ClipRect: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
+  m_AllowLocking: 1
