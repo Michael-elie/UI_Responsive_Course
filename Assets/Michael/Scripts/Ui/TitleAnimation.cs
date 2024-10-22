@@ -12,7 +12,7 @@ public class TitleAnimation : MonoBehaviour
         [SerializeField] private Color neonColor = new Color(); 
         [SerializeField] private float bounceDuration = 0.5f;
         [SerializeField] private CanvasGroup mainMenu;
-        void Start() {
+        void Awake() {
             
             ShowTitle();
         }

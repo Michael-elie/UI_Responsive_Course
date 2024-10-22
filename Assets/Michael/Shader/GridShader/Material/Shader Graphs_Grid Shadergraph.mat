@@ -74,7 +74,7 @@ Material:
     - _UIMaskSoftnessX: 1
     - _UIMaskSoftnessY: 1
     m_Colors:
-    - Color_4e5f204fd5f64ed299f6b622e64c15a9: {r: 0.16981131, g: 0.16260234, b: 0.16260234, a: 0}
+    - Color_4e5f204fd5f64ed299f6b622e64c15a9: {r: 0.23885724, g: 0.15574937, b: 0.26415092, a: 1}
     - Color_5741e0a7b6e24d9881c17eadeabc70c3: {r: 6.8831797, g: 0, b: 4.474068, a: 0}
     - Vector2_fb6a8e1a90ea4826b5f00fdfee1c4bbc: {r: 7, g: 7, b: 0, a: 0}
     - _ClipRect: {r: 0, g: 0, b: 0, a: 0}

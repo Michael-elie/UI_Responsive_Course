@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour
 {
     public static int Score = 0;
     
+    
     private void OnEnable()
     {
         

@@ -4,6 +4,7 @@ using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 public class Blade : MonoBehaviour
 {
@@ -19,13 +20,15 @@ public class Blade : MonoBehaviour
     [SerializeField] private GameObject malusPrefab;
     [SerializeField] private Camera mainCamera;
     [SerializeField] private Data _data;
-    //[SerializeField] ParticleSystem _particle;
+    [SerializeField] ParticleSystem _sliceParticle;
+    [SerializeField] ParticleSystem _bombParticle;
     private Rigidbody _rb;
     private TrailRenderer _tr;
     private Collider _collider;
     private InputAction _sliceAction;
     private InputAction _TouchPositionAction;
     private bool _touched;
+    private Vector3 _initialTouchPosition;
 
    
     void Start() {
@@ -36,14 +39,15 @@ public class Blade : MonoBehaviour
         _tr.material = _data.BladeMaterial;
     }
     
+
     private void OnEnable()
     {
-        _sliceAction = InputSystem.actions.FindAction("TouchPress");
-        _TouchPositionAction = InputSystem.actions.FindAction("TouchPosition");
         OnBombTouched += DisplayMalusText;
         OnTargetSliced += SliceComboTarget;
-        BeatManager.onPerfectHit += DisplayPerfectHit;
         OnCdSliced += DisplayCDText;
+        _sliceAction = InputSystem.actions.FindAction("TouchPress");
+        _TouchPositionAction = InputSystem.actions.FindAction("TouchPosition");
+        BeatManager.onPerfectHit += DisplayPerfectHit;
         _sliceAction.performed += OnSlice;
         _sliceAction.canceled += OnSliceEnd;
     }
@@ -57,12 +61,13 @@ public class Blade : MonoBehaviour
         _sliceAction.canceled -= OnSliceEnd;
     }
 
-    private void OnSlice(InputAction.CallbackContext context) {
-       _touched = true;
+    private void OnSlice(InputAction.CallbackContext context)
+    {
+        _initialTouchPosition = transform.position;
+        _touched = true;
     }
-    private void OnSliceEnd(InputAction.CallbackContext context) {
-      
-       _touched = false;
+    private void OnSliceEnd(InputAction.CallbackContext context) { 
+        _touched = false;
       
     }
 
@@ -72,8 +77,12 @@ public class Blade : MonoBehaviour
 
         if (_touched)
         {
-            _tr.enabled = true;
-            _collider.enabled = true;
+            if (_initialTouchPosition != transform.position)
+            {
+                _tr.enabled = true;
+                _collider.enabled = true; 
+            }
+           
         }
         else 
         {
@@ -127,27 +136,32 @@ public class Blade : MonoBehaviour
             Debug.Log("fruit touché");
             other.GetComponent<Fruit>().SliceFruit();
             OnTargetSliced.Invoke();
+            Instantiate(_sliceParticle, other.transform.position, Quaternion.identity);
         }
         if (other.CompareTag("Bomb"))
         {
             OnBombTouched.Invoke();
             other.GetComponent<Fruit>().SliceFruit();
+            _bombParticle.Play();
+            Instantiate(_bombParticle, other.transform.position, Quaternion.identity);
         }
         if (other.CompareTag("Cd"))
         {
             other.GetComponent<Fruit>().SliceFruit();
             OnCdSliced.Invoke();
+           
         }
         
     }
     
     private void DisplayMalusText()
     {
-        DisplayText(malusPrefab,"-20 pts ",transform.position + Vector3.right);
         GameManager.Score -= 20;
         if ( GameManager.Score < 0 ) {
             GameManager.Score = 0;
         }
+        DisplayText(malusPrefab,"-20 pts ",transform.position + Vector3.right);
+        
     }
 
     private void DisplayCDText()
@@ -164,7 +178,7 @@ public class Blade : MonoBehaviour
     private void DisplayText(GameObject prefab, string message, Vector3 position) {
         
         GameObject Uiprefab = Instantiate(prefab, position, Quaternion.identity);
-        Uiprefab.transform.SetParent(GameObject.Find("Canvas").transform, false);
+        Uiprefab.transform.SetParent(GameObject.Find("Canvas").transform);
         Uiprefab.transform.position = Camera.main.WorldToScreenPoint(position);
         Uiprefab.transform.DOScale(1, 0.3f);
         Uiprefab.GetComponent<TextMeshProUGUI>().text = message;

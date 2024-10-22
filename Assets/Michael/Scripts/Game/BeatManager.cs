@@ -14,6 +14,7 @@ public class BeatManager : MonoBehaviour
     [SerializeField] private List<Intervals> intervals;
     [SerializeField] private float timingTolerance = 0.1f;
     
+
     private void OnEnable()
     {
         Blade.OnTargetSliced += CheckPlayerInput; 
@@ -26,10 +27,15 @@ public class BeatManager : MonoBehaviour
 
     
     void Update() {
-        foreach (Intervals interval in intervals) {
-            float sampledTime = (source.timeSamples / (source.clip.frequency * interval.GetIntervalength(bpm)));
-            interval.CheckForNewInterval(sampledTime);
+        
+        if (!PauseController.IsPaused)
+        {
+            foreach (Intervals interval in intervals) {
+                float sampledTime = (source.timeSamples / (source.clip.frequency * interval.GetIntervalength(bpm)));
+                interval.CheckForNewInterval(sampledTime);
+            }
         }
+      
     }
 
     private void CheckPlayerInput()

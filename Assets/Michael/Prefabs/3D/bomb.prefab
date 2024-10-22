@@ -421,7 +421,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wholefruit: {fileID: 6049620147654686969}
   slicedFruit: {fileID: 8836488840327052658}
-  sliceForce: 130
+  sliceForce: 500
   rotationForce: 200
 --- !u!135 &1237529123523962380
 SphereCollider:

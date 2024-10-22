@@ -19,11 +19,13 @@ public class ScoreText : MonoBehaviour
    private void OnEnable()
    {
       Blade.OnTargetSliced += RefreshScore;
+      Blade.OnBombTouched += RefreshScore;
    }
 
    private void OnDisable()
    {
       Blade.OnTargetSliced -= RefreshScore;
+      Blade.OnBombTouched -= RefreshScore;
    }
 
    private void RefreshScore() {

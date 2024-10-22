@@ -3,11 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using DG.Tweening;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
+using Sequence = DG.Tweening.Sequence;
 
 public class MenuManager : MonoBehaviour
 {
@@ -23,16 +25,31 @@ public class MenuManager : MonoBehaviour
         Screen.orientation = ScreenOrientation.LandscapeLeft;
         Screen.autorotateToPortrait = false;
         Screen.autorotateToPortraitUpsideDown = false;
+        
+        
     }
 
     private void Start()
     {
-       // SetMusicVolume();
-       // SetSfxVolume();
+        SetMusicVolume();
+        SetSfxVolume();
+
+        PauseController.IsPaused = false;
+        
+    }
+    void Update()
+    {
+        if (PauseController.IsPaused) {
+            Time.timeScale = 0;
+        }
+        else {
+            Time.timeScale = 1;
+        }
     }
 
-    public void StartGame() {
-        SceneManager.LoadScene("Game");
+
+    public void LoadScene(string title) {
+        SceneManager.LoadScene(title);
     }
 
     public void ButtonFeedbackWithRotate(Button button) {
@@ -57,12 +74,19 @@ public class MenuManager : MonoBehaviour
     }
 
     public void OpenPanel(GameObject panel) {
-        
-        _mainTitle.SetActive(false);
+
+        if (_mainTitle)
+        {
+            _mainTitle.SetActive(false);
+        }
         CanvasGroup canvasGroup = panel.GetComponent<CanvasGroup>();
         canvasGroup.blocksRaycasts = true;
         canvasGroup.interactable = true;
-        _menuCanvasGroup.GetComponent<CanvasGroup>().DOFade(0.02f, 0.5f);
+        if (_menuCanvasGroup)
+        {
+            _menuCanvasGroup.GetComponent<CanvasGroup>().DOFade(0.02f, 0.5f);
+        }
+   
         
         Sequence showSequence = DOTween.Sequence();
         showSequence.Append(panel.GetComponent<Transform>().DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBack));
@@ -72,11 +96,18 @@ public class MenuManager : MonoBehaviour
     
      public void ClosePanel(GameObject panel)
      {
-         _mainTitle.SetActive(true);
+         if (_mainTitle)
+         {
+             _mainTitle.SetActive(true);
+         }
          CanvasGroup canvasGroup = panel.GetComponent<CanvasGroup>();
          canvasGroup.blocksRaycasts = false;
          canvasGroup.interactable = false;
-         _menuCanvasGroup.GetComponent<CanvasGroup>().DOFade(1, 0.5f);
+         if (_menuCanvasGroup)
+         {
+             _menuCanvasGroup.GetComponent<CanvasGroup>().DOFade(1, 0.5f);
+         }
+       
          
          Sequence hideSequence = DOTween.Sequence();
          hideSequence.Append(panel.GetComponent<Transform>().DOScale(Vector3.zero, 0.5f).SetEase(Ease.InBack));
