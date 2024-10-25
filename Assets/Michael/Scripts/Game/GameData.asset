@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MusicVolume: 0.5
   SfxVolume: 0.5
-  Highscore: 652
-  DiscNumber: 30
-  BladeMaterial: {fileID: 2100000, guid: f640146e7f4099947bae048b98ab5f84, type: 2}
+  Highscore: 0
+  DiscNumber: 0
+  BladeMaterial: {fileID: 2100000, guid: 592c60f56a18b4d4fb6ae0cacaa610a6, type: 2}
+  CurrentBlade: {fileID: 11400000, guid: 1081a9a53172a394e8775c4f2eca0ba7, type: 2}
+  Items: []

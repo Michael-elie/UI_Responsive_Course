@@ -9,11 +9,9 @@ public class InventorySlot : MonoBehaviour, IDropHandler
 {
     [SerializeField] private InventorySlot bladeslot;
     [SerializeField] private Data data;
-
-    private void Start()
-    {
-       // ChangeBladeMaterial();
-    }
+    public bool isBladeslot = false;
+   
+    
 
     private void Update()
     {
@@ -30,20 +28,22 @@ public class InventorySlot : MonoBehaviour, IDropHandler
             DraggableBladeItem currentDraggableBlade = current.GetComponent<DraggableBladeItem>();
             
             currentDraggableBlade.transform.SetParent(draggableBladeItem.ParentAfterDrag);
+            if (isBladeslot)
+            {
+               /* data.unlockedBlades.Remove(current);
+                data.unlockedBlades.Add(droppedObject);*/
+              Debug.Log("chnage blade");
+            }
+            
         }
         draggableBladeItem.ParentAfterDrag = transform;
        // ChangeBladeMaterial();
     }
 
-    private void ChangeBladeMaterial() {
-        if (bladeslot.GetComponentInChildren<DraggableBladeItem>()) {
-            bladeslot.data.BladeMaterial = bladeslot.GetComponentInChildren<DraggableBladeItem>().BladeMaterial;
-        }
-        else
-        {
-            bladeslot.data.BladeMaterial = null;
-        }
-       
+    private void ChangeBladeMaterial()
+    {
+        bladeslot.data.BladeMaterial = bladeslot.GetComponentInChildren<DraggableBladeItem>() ? bladeslot.
+            GetComponentInChildren<DraggableBladeItem>().BladeMaterial : null;
     }
     
 }

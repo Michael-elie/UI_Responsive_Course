@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Michael.Scripts;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/Data")]
+[CreateAssetMenu(fileName = "GameData", menuName = "ScriptableObjects/Data")]
 public class Data : ScriptableObject
 {
     public float MusicVolume;
@@ -10,4 +11,7 @@ public class Data : ScriptableObject
     public int Highscore;
     public int DiscNumber;
     public Material BladeMaterial;
+    public ItemData CurrentBlade;
+    public List<ItemData> Items = new List<ItemData>();
+
 }

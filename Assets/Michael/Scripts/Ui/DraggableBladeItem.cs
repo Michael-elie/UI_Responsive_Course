@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
@@ -9,11 +10,19 @@ namespace Michael.Scripts
     public class DraggableBladeItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
     {
         public Material BladeMaterial; 
+        public int BladeIndex;
         [HideInInspector] public Image ItemImage;
         [HideInInspector] public Transform ParentAfterDrag;
+     
 
-        
-       
+        private void Update()
+        {
+            if (GetComponentInParent<InventorySlot>())
+            {
+                ItemImage.raycastTarget = !GetComponentInParent<InventorySlot>().isBladeslot;
+            }
+        }
+
         private void Start() {
             ItemImage = GetComponent<Image>();
         }

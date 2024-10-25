@@ -916,7 +916,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 1
   m_AdditionalShaderChannelsFlag: 25
-  m_UpdateRectTransformForStandalone: 0
+  m_UpdateRectTransformForStandalone: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -1339,7 +1339,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a52ce3c2fead29843964e90da5b140d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _data: {fileID: 11400000, guid: 5b04846e3b43aaa409cde35adfb9c9ba, type: 2}
+  Data: {fileID: 11400000, guid: 5b04846e3b43aaa409cde35adfb9c9ba, type: 2}
+  InventorySlots: []
+  Blades: []
+  DiscCountText: {fileID: 0}
   _mixer: {fileID: 24100000, guid: 9b214439c50664246bc104e09dd755ee, type: 2}
   _sfxSlider: {fileID: 430221542}
   _musicSlider: {fileID: 1410381446}
@@ -1347,6 +1350,7 @@ MonoBehaviour:
   _buttonSounds:
   - {fileID: 1859230264}
   _mainTitle: {fileID: 0}
+  StoreText: {fileID: 0}
 --- !u!114 &599960739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1848,8 +1852,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.04, y: 0.82}
   m_AnchorMax: {x: 0.33, y: 0.96}
-  m_AnchoredPosition: {x: -1.253418, y: -1.7264404}
-  m_SizeDelta: {x: -2.5073547, y: 3.4527588}
+  m_AnchoredPosition: {x: -1.25354, y: -1.7264404}
+  m_SizeDelta: {x: -2.5070953, y: 3.4528198}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1009835554
 MonoBehaviour:

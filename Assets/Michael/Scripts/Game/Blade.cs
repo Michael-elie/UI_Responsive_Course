@@ -177,12 +177,13 @@ public class Blade : MonoBehaviour
     
     private void DisplayText(GameObject prefab, string message, Vector3 position) {
         
-        GameObject Uiprefab = Instantiate(prefab, position, Quaternion.identity);
-        Uiprefab.transform.SetParent(GameObject.Find("Canvas").transform);
-        Uiprefab.transform.position = Camera.main.WorldToScreenPoint(position);
-        Uiprefab.transform.DOScale(1, 0.3f);
-        Uiprefab.GetComponent<TextMeshProUGUI>().text = message;
-        Destroy(Uiprefab, 0.7f);
+        GameObject uiprefab = Instantiate(prefab, GameObject.Find("Canvas").transform, false);
+        Vector3 screenPosition = Camera.main.WorldToScreenPoint(position);
+        RectTransform rectTransform = uiprefab.GetComponent<RectTransform>();
+        rectTransform.position = screenPosition;
+        uiprefab.transform.DOScale(1, 0.3f);
+        uiprefab.GetComponent<TextMeshProUGUI>().text = message;
+        Destroy(uiprefab, 0.7f);
     }
     
     
