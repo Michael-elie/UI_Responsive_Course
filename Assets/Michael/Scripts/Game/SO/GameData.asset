@@ -15,7 +15,7 @@ MonoBehaviour:
   MusicVolume: 0.5
   SfxVolume: 0.5
   Highscore: 0
-  DiscNumber: 0
-  BladeMaterial: {fileID: 2100000, guid: 592c60f56a18b4d4fb6ae0cacaa610a6, type: 2}
+  DiscNumber: 25
   CurrentBlade: {fileID: 11400000, guid: 1081a9a53172a394e8775c4f2eca0ba7, type: 2}
-  Items: []
+  Items:
+  - {fileID: 11400000, guid: 1081a9a53172a394e8775c4f2eca0ba7, type: 2}

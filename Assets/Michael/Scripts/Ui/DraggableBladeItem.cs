@@ -9,8 +9,8 @@ namespace Michael.Scripts
 {
     public class DraggableBladeItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
     {
-        public Material BladeMaterial; 
-        public int BladeIndex;
+        public Material BladeMaterial;
+        public ItemData bladeData;
         [HideInInspector] public Image ItemImage;
         [HideInInspector] public Transform ParentAfterDrag;
      

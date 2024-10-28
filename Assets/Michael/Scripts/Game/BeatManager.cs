@@ -17,12 +17,12 @@ public class BeatManager : MonoBehaviour
 
     private void OnEnable()
     {
-        Blade.OnTargetSliced += CheckPlayerInput; 
+        BladeController.OnTargetSliced += CheckPlayerInput; 
     }
 
     private void OnDisable()
     {
-        Blade.OnTargetSliced -= CheckPlayerInput;
+        BladeController.OnTargetSliced -= CheckPlayerInput;
     }
 
     

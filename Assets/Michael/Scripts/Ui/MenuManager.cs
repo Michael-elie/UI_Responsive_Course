@@ -18,15 +18,17 @@ public class MenuManager : MonoBehaviourSingleton<MenuManager>
 {
     public Data Data;
     public List<GameObject> InventorySlots;
-    public List<GameObject> Blades;
+    public GameObject CurrentBladeSlots;
     public TextMeshProUGUI DiscCountText;
+    public GameObject StoreText;
+    public GameObject BladeItemPrefab;
     [SerializeField] private AudioMixer _mixer;
     [SerializeField] private Slider _sfxSlider;
     [SerializeField] private Slider _musicSlider;
     [SerializeField] private GameObject _menuCanvasGroup;
     [SerializeField] private List<AudioSource> _buttonSounds;
     [SerializeField] private GameObject _mainTitle;
-    [SerializeField] private GameObject StoreText;
+ 
     private void Awake()
     {
         Screen.orientation = ScreenOrientation.LandscapeLeft;
@@ -38,8 +40,12 @@ public class MenuManager : MonoBehaviourSingleton<MenuManager>
 
     private void Start()
     {
-        SetMusicVolume();
-        SetSfxVolume();
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Menu") )
+        {
+            UpdateInventoryUI();
+        }
+        _sfxSlider.value = Data.SfxVolume;
+        _musicSlider.value = Data.MusicVolume;
         PauseController.IsPaused = false;
     }
 
@@ -53,6 +59,37 @@ public class MenuManager : MonoBehaviourSingleton<MenuManager>
         {
             Time.timeScale = 1;
         }
+    }
+    
+    public void UpdateInventoryUI()
+    {
+        foreach (var blade in Data.Items )
+        {
+            if (blade != Data.CurrentBlade)
+            {
+                Debug.Log("est different ");
+                foreach (GameObject slot in InventorySlots)
+                {
+                    if (slot.transform.childCount == 0)
+                    {
+                        GameObject newBlade = Instantiate(BladeItemPrefab, slot.transform);
+                        newBlade.GetComponent<Image>().color = blade.IconColor;
+                        newBlade.GetComponent<DraggableBladeItem>().BladeMaterial = blade.BladeMaterial;
+                        newBlade.GetComponent<DraggableBladeItem>().bladeData = blade;
+                        break;
+                    }
+                   
+                }
+            }
+            else 
+            {
+                GameObject newBlade = Instantiate(BladeItemPrefab, CurrentBladeSlots.transform);
+                newBlade.GetComponent<Image>().color = Data.CurrentBlade.IconColor;
+                newBlade.GetComponent<DraggableBladeItem>().BladeMaterial = Data.CurrentBlade.BladeMaterial;
+                newBlade.GetComponent<DraggableBladeItem>().bladeData = blade;
+            }
+        }
+            
     }
 
 
@@ -76,6 +113,7 @@ public class MenuManager : MonoBehaviourSingleton<MenuManager>
     public void ButtonFeedback(Button button)
     {
 
+        Handheld.Vibrate();
         _buttonSounds[Random.Range(0, _buttonSounds.Count)].Play();
         Sequence feedBackSequence = DOTween.Sequence();
         feedBackSequence.Append(button.transform.DOScale(1.1f, 0.2f).SetEase(Ease.Linear));
@@ -142,7 +180,55 @@ public class MenuManager : MonoBehaviourSingleton<MenuManager>
         _mixer.SetFloat("Sfx", Mathf.Log10(Data.SfxVolume) * 20);
     }
     
-  
-  
+   /* public void loadInventory()
+    {
+        foreach (int bladeindex in MenuManager.Instance.Data.BladesUnlocked)
+        {
+              
+            foreach (GameObject slot in Instance.InventorySlots)
+            {
+                if (slot.transform.childCount == 0)
+                {
+                    GameObject newBlade = Instantiate(Instance.Blades[bladeindex], slot.transform);
+                    return;
+                }
+            }
+        }
+    }*/
+    
+    
+   public void UpdateInventoryUITEST()
+   {
+       
+       foreach (GameObject slot in InventorySlots)
+       {
+           foreach (var blade in Data.Items)
+           {
+               if (blade != Data.CurrentBlade)
+               {
+                   if (slot.transform.childCount == 0)
+                   {
+                       GameObject newBlade = Instantiate(BladeItemPrefab, slot.transform);
+                       newBlade.GetComponent<Image>().color = blade.IconColor;
+                       newBlade.GetComponent<DraggableBladeItem>().BladeMaterial = blade.BladeMaterial;
+                       newBlade.GetComponent<DraggableBladeItem>().bladeData = blade;
+                       // return;
+                   }
+               }
+               else 
+               {
+                   GameObject newBlade = Instantiate(BladeItemPrefab, CurrentBladeSlots.transform);
+                   newBlade.GetComponent<Image>().color = Data.CurrentBlade.IconColor;
+                   newBlade.GetComponent<DraggableBladeItem>().BladeMaterial = Data.CurrentBlade.BladeMaterial;
+                   newBlade.GetComponent<DraggableBladeItem>().bladeData = blade;
+               }
+              
+           }
+       }
+          
+   }
 
 }
+
+
+

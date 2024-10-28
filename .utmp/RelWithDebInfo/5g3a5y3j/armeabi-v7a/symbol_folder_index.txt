@@ -1,0 +1,1 @@
+D:\Utilisateurs\miche\Unity Project 2023-2024\TurboTortue\UI_Responsive_Course\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\cxx\RelWithDebInfo\5g3a5y3j\obj\armeabi-v7a

@@ -10,9 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 617ba7f54e3a4ff46a6409a158c60189, type: 3}
-  m_Name: ItemData
+  m_Name: Blade_violet
   m_EditorClassIdentifier: 
-  BladeCost: 0
-  BladeName: Lame basique
-  BladeIcon: {fileID: 0}
-  BladeMaterial: {fileID: 0}
+  IconColor: {r: 0.4901961, g: 0.007843138, b: 0.9450981, a: 1}
+  BladeMaterial: {fileID: 2100000, guid: 599321eabc9ff614596e0646053e77a3, type: 2}

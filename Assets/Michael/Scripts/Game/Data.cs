@@ -10,8 +10,7 @@ public class Data : ScriptableObject
     public float SfxVolume;
     public int Highscore;
     public int DiscNumber;
-    public Material BladeMaterial;
     public ItemData CurrentBlade;
     public List<ItemData> Items = new List<ItemData>();
-
+   
 }

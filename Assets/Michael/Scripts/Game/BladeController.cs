@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 
-public class Blade : MonoBehaviour
+public class BladeController : MonoBehaviour
 {
     public static Action OnTargetSliced;
     public static Action OnBombTouched;
@@ -36,7 +36,7 @@ public class Blade : MonoBehaviour
         _tr = GetComponent<TrailRenderer>();
         _collider = GetComponent<Collider>();
       
-        _tr.material = _data.BladeMaterial;
+        _tr.material = _data.CurrentBlade.BladeMaterial;
     }
     
 

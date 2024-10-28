@@ -15,7 +15,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler
 
     private void Update()
     {
-        ChangeBladeMaterial();
+       // ChangeBladeMaterial();
     }
 
     public void OnDrop(PointerEventData eventData) {
@@ -24,17 +24,14 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         DraggableBladeItem draggableBladeItem = droppedObject.GetComponent<DraggableBladeItem>();
         
         if(transform.childCount != 0) {           
-            GameObject current = transform.GetChild(0).gameObject;
+            GameObject current = transform.GetComponentInChildren<DraggableBladeItem>().gameObject;
             DraggableBladeItem currentDraggableBlade = current.GetComponent<DraggableBladeItem>();
             
             currentDraggableBlade.transform.SetParent(draggableBladeItem.ParentAfterDrag);
             if (isBladeslot)
             {
-               /* data.unlockedBlades.Remove(current);
-                data.unlockedBlades.Add(droppedObject);*/
-              Debug.Log("chnage blade");
+                bladeslot.data.CurrentBlade = draggableBladeItem.bladeData;
             }
-            
         }
         draggableBladeItem.ParentAfterDrag = transform;
        // ChangeBladeMaterial();
@@ -42,8 +39,10 @@ public class InventorySlot : MonoBehaviour, IDropHandler
 
     private void ChangeBladeMaterial()
     {
-        bladeslot.data.BladeMaterial = bladeslot.GetComponentInChildren<DraggableBladeItem>() ? bladeslot.
+        bladeslot.data.CurrentBlade.BladeMaterial = bladeslot.GetComponentInChildren<DraggableBladeItem>() ? bladeslot.
             GetComponentInChildren<DraggableBladeItem>().BladeMaterial : null;
+        
+        
     }
     
 }
